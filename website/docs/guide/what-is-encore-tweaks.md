@@ -53,4 +53,4 @@ Encore Tweaks works like a automated profiling system, it's dynamically adjusts 
 Encore Tweaks provides a user-friendly WebUI for managing settings and adjusting preferences. For details, visit the [Module WebUI and Configuration Guide](/guide/webui-and-configuration).
 
 ## FAQ
-Have a question? Check out our [FAQ page](/guide/faq). If you still have questions, join our Telegram Group [@rem01shideout](https://t.me/rem01shideout).
+Have a question? Check out our [FAQ page](/guide/faq).
