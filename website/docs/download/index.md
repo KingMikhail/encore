@@ -15,8 +15,7 @@ description: "Download the latest version of Encore Tweaks Magisk Module here"
 - Other misc changes and optimizations
 
 ## Download
-- [Download](https://github.com/Rem01Gaming/encore/releases/tag/4.6)
-- [Telegram Channel](https://rem01schannel.t.me)
+- [Download](https://github.com/KingMikhail/encore/releases/tag/4.6)
 
 ::: tip Support our project
 Please consider support our project by not sharing direct module file
