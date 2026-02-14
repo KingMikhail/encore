@@ -7,7 +7,7 @@ description: "Learn how to configure Encore Tweaks settings via Module WebUI for
 
 The **Encore Tweaks** module offers a variety of performance-tuning settings accessible through the [Module WebUI](https://kernelsu.org/guide/module-webui.html)—a feature of **KernelSU** that allows modules to build interactive HTML, CSS, and JavaScript interfaces. This WebUI makes it easy for users to configure Encore Tweaks without needing to manually edit configuration files.
 
-While **KernelSU** and **APatch** support WebUI natively in their managers, **Magisk** does not. If you're using Magisk, you can still access the WebUI using the [KSU WebUI APK](https://t.me/rem01schannel/636) or [WebUI X](https://play.google.com/store/apps/details?id=com.dergoogler.mmrl.wx).
+While **KernelSU** and **APatch** support WebUI natively in their managers, **Magisk** does not. If you're using Magisk, you can still access the WebUI using the [KSU WebUI APK](https://github.com/KingMikhail/encore) or [WebUI X](https://play.google.com/store/apps/details?id=com.dergoogler.mmrl.wx).
 
 ::: details Preview of Encore Tweaks WebUI
 ![Encore Tweaks WebUI](/Screenshot_20250520-161223_MMRL.avif)
