@@ -10,7 +10,7 @@ In addition to applying various performance tweaks dinamically, Encore Tweaks al
 Other module can watch current profile on Encore Tweaks and then apply their own tweaks as it changes, ultimately working together with Encore Tweaks as an Add-on.
 
 ::: tip
-If you find that the existing API doesn't meet your needs or is inconvenient to use, you're welcome to give us suggestions [here](https://github.com/Rem01Gaming/encore/issues)!
+If you find that the existing API doesn't meet your needs or is inconvenient to use, you're welcome to give us suggestions [here](https://github.com/KingMikhail/encore/issues)!
 :::
 
 ::: tip Note
