@@ -16,7 +16,7 @@ cd "$GITHUB_WORKSPACE" || {
 version="$(cat version)"
 version_code="$(git rev-list HEAD --count)"
 release_code="$(git rev-list HEAD --count)-$(git rev-parse --short HEAD)-release"
-sed -i "s/version=.*/version=$version ($release_code)/" module/module.prop
+sed -i "s/version=.*/version=$version/" module/module.prop
 sed -i "s/versionCode=.*/versionCode=$version_code/" module/module.prop
 
 # Copy module files
