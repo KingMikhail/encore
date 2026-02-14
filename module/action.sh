@@ -15,25 +15,25 @@
 #
 
 if [ -n "$MMRL" ]; then
-	echo "- This action script is NOT intended to run on MMRL..."
-	echo "- Please open Encore Tweaks WebUI by clicking the module card."
+	echo "This Action Script is not Intended to Run on MMRL..."
+	echo "Open Encore Tweaks WebUI by Clicking the Module Card"
 	exit 0
 fi
 
 if [ -n "$MAGISKTMP" ]; then
 	pm path io.github.a13e300.ksuwebui >/dev/null 2>&1 && {
-		echo "- Launching WebUI in KSUWebUIStandalone..."
+		echo "Launching WebUI in KSUWebUIStandalone..."
 		am start -n "io.github.a13e300.ksuwebui/.WebUIActivity" -e id "encore"
 		exit 0
 	}
 	pm path com.dergoogler.mmrl.webuix >/dev/null 2>&1 && {
-		echo "- Launching WebUI in WebUI X..."
+		echo "Launching WebUI in WebUI X..."
 		am start -n "com.dergoogler.mmrl.webuix/.ui.activity.webui.WebUIActivity" -e MOD_ID "encore"
 		exit 0
 	}
 fi
 
-echo "! Install KsuWebUI for WebUI access"
+echo "Install KsuWebUI for WebUI Access"
 sleep 2
 am start -a android.intent.action.VIEW -d https://github.com/5ec1cff/KsuWebUIStandalone/releases
 exit 0
