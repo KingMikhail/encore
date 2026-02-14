@@ -29,49 +29,49 @@ make_dir() {
 }
 
 abort_unsupported_arch() {
-	ui_print "*********************************************************"
-	ui_print "! Unsupported Architecture: $ARCH"
-	ui_print "! Your CPU architecture is not supported by Encore Tweaks."
-	abort "*********************************************************"
+	ui_print "*****"
+	ui_print "Unsupported Architecture: $ARCH"
+	ui_print "Your CPU Architecture is not Supported by Encore Tweaks"
+	abort "*****"
 }
 
 abort_corrupted() {
-	ui_print "*********************************************************"
-	ui_print "! Unable to extract verify.sh!"
-	ui_print "! Installation aborted. The module may be corrupted."
-	ui_print "! Please re-download and try again."
-	abort "*********************************************************"
+	ui_print "*****"
+	ui_print "Unable to Extract Verify.sh!"
+	ui_print "Installation Aborted, Module may be Corrupted"
+	ui_print "Re-Download and Try again"
+	abort "*****"
 }
 
 abort_gamelist_error() {
-	ui_print "*********************************************************"
-	ui_print "! Failed to initialize gamelist!"
-	ui_print "! Installation aborted."
-	abort "*********************************************************"
+	ui_print "*****"
+	ui_print "Failed to Initialize Gamelist"
+	ui_print "Installation Aborted"
+	abort "*****"
 }
 
 soc_recognition_extra() {
 	[ -d /sys/class/kgsl/kgsl-3d0/devfreq ] && {
 		SOC=2
-		ui_print "- Implementing tweaks for Snapdragon"
+		ui_print "Implementing Tweaks for Snapdragon"
 		return 0
 	}
 
 	[ -d /sys/devices/platform/kgsl-2d0.0/kgsl ] && {
 		SOC=2
-		ui_print "- Implementing tweaks for Snapdragon"
+		ui_print "Implementing Tweaks for Snapdragon"
 		return 0
 	}
 
 	[ -d /sys/kernel/ged/hal ] && {
 		SOC=1
-		ui_print "- Implementing tweaks for MediaTek"
+		ui_print "Implementing Tweaks for MediaTek"
 		return 0
 	}
 
 	[ -d /sys/kernel/tegra_gpu ] && {
 		SOC=7
-		ui_print "- Implementing tweaks for Nvidia Tegra"
+		ui_print "Implementing Tweaks for Nvidia Tegra"
 		return 0
 	}
 
@@ -108,14 +108,14 @@ recognize_soc() {
 	esac
 
 	case "$SOC" in
-	1) ui_print "- Implementing tweaks for MediaTek" ;;
-	2) ui_print "- Implementing tweaks for Snapdragon" ;;
-	3) ui_print "- Implementing tweaks for Exynos" ;;
-	4) ui_print "- Implementing tweaks for Unisoc" ;;
-	5) ui_print "- Implementing tweaks for Google Tensor" ;;
-	6) ui_print "- Implementing tweaks for Intel" ;;
-	7) ui_print "- Implementing tweaks for Nvidia Tegra" ;;
-	8) ui_print "- Implementing tweaks for Kirin" ;;
+	1) ui_print "Implementing Tweaks for MediaTek" ;;
+	2) ui_print "Implementing Tweaks for Snapdragon" ;;
+	3) ui_print "Implementing Tweaks for Exynos" ;;
+	4) ui_print "Implementing Tweaks for Unisoc" ;;
+	5) ui_print "Implementing Tweaks for Google Tensor" ;;
+	6) ui_print "Implementing Tweaks for Intel" ;;
+	7) ui_print "Implementing Tweaks for Nvidia Tegra" ;;
+	8) ui_print "Implementing Tweaks for Kirin" ;;
 	0) return 1 ;;
 	esac
 }
@@ -130,13 +130,13 @@ generate_gamelist() {
 }
 
 # Flashable integrity checkup
-ui_print "- Extracting verify.sh"
+ui_print "Extracting Verify.sh"
 unzip -o "$ZIPFILE" 'verify.sh' -d "$TMPDIR" >&2
 [ ! -f "$TMPDIR/verify.sh" ] && abort_corrupted
 source "$TMPDIR/verify.sh"
 
 # Extract module files
-ui_print "- Extracting module files"
+ui_print "Extracting Module Files"
 extract "$ZIPFILE" 'module.prop' "$MODPATH"
 extract "$ZIPFILE" 'service.sh' "$MODPATH"
 extract "$ZIPFILE" 'uninstall.sh' "$MODPATH"
@@ -163,7 +163,7 @@ ln -sf "$MODPATH/system/bin/encored" "$MODPATH/system/bin/encore_log"
 rm -rf "$TMPDIR/libs"
 
 if [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; then
-  ui_print "- KSU/AP Detected, skipping module mount (skip_mount)"
+  ui_print "KSU/AP Detected, Skipping Module Mount (Skip Mount)"
 	rm "$MODPATH/action.sh"
 	touch "$MODPATH/skip_mount"
 
@@ -172,7 +172,7 @@ if [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; then
 	BIN_PATH="/data/adb/modules/encore/system/bin"
 	for dir in $manager_paths; do
 		[ -d "$dir" ] && {
-			ui_print "- Creating symlink in $dir"
+			ui_print "Creating Symlink in $dir"
 			ln -sf "$BIN_PATH/encored" "$dir/encored"
 			ln -sf "$BIN_PATH/encore_profiler" "$dir/encore_profiler"
 			ln -sf "$BIN_PATH/encore_utility" "$dir/encore_utility"
@@ -181,7 +181,7 @@ if [ "$KSU" = "true" ] || [ "$APATCH" = "true" ]; then
 fi
 
 # Extract webroot
-ui_print "- Extracting webroot"
+ui_print "Extracting WebRoot"
 unzip -o "$ZIPFILE" "webroot/*" -d "$MODPATH" -x "*.sha256" >&2
 
 # Mitigate root detection
@@ -189,23 +189,23 @@ unzip -o "$ZIPFILE" "webroot/*" -d "$MODPATH" -x "*.sha256" >&2
 [ -f /data/local/tmp/encore_logo.png ] && rm -f /data/local/tmp/encore_logo.png
 
 # Set configs
-ui_print "- Encore Tweaks configuration setup"
+ui_print "Encore Tweaks Configuration Setup"
 make_dir "$MODULE_CONFIG"
 extract "$ZIPFILE" 'device_mitigation.json' "$MODULE_CONFIG"
 [ ! -f "$MODULE_CONFIG/ppm_policies_mediatek" ] && echo 'PWR_THRO|THERMAL' >"$MODULE_CONFIG/ppm_policies_mediatek"
 
 # Permission settings
-ui_print "- Permission setup"
+ui_print "Permission Setup"
 set_perm_recursive "$MODPATH/system/bin" 0 0 0755 0755
 
 # Gamelist setup
 if [ ! -f "$MODULE_CONFIG/gamelist.json" ]; then
-  ui_print "- Initializing Gamelist JSON..."
+  ui_print "Initializing Gamelist JSON..."
   generate_gamelist
 else
   "$MODPATH/system/bin/encored" check_gamelist
   [ $? -gt 0 ] && {
-    ui_print "! Gamelist JSON is malformed, regenerating..."
+    ui_print "Gamelist JSON is Malformed, Regenerating..."
     generate_gamelist
   }
 fi
@@ -235,12 +235,12 @@ echo $SOC >"$MODULE_CONFIG/soc_recognition"
 
 # Easter Egg
 case "$((RANDOM % 8 + 1))" in
-1) ui_print "- Wooly's Fairy Tale" ;;
-2) ui_print "- Sheep-counting Lullaby" ;;
-3) ui_print "- Fog? The Black Shores!" ;;
-4) ui_print "- Adventure? Let's go!" ;;
-5) ui_print "- Hero Takes the Stage!" ;;
-6) ui_print "- Woolies Save the World!" ;;
-7) ui_print "- How much people will let you live for Encore?" ;;
-8) ui_print "- Wen Donate?" ;;
+1) ui_print "Wooly's Fairy Tale" ;;
+2) ui_print "Sheep-counting Lullaby" ;;
+3) ui_print "Fog? The Black Shores!" ;;
+4) ui_print "Adventure? Let's Go!" ;;
+5) ui_print "Hero Takes the Stage!" ;;
+6) ui_print "Woolies Save the World!" ;;
+7) ui_print "How much People will Let you Live for Encore?" ;;
+8) ui_print "When Donate?" ;;
 esac
