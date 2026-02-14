@@ -2,7 +2,7 @@
 
 **Thanks for using Encore Tweaks!**
 
-Your continued support keeps this project going. If you enjoy the improvements and want to see more features in the future, [consider supporting the developer with a small donation](https://t.me/rem01schannel/670). Every bit helps!
+Your continued support keeps this project going. If you enjoy the improvements and want to see more features in the future, [consider supporting the developer with a small donation](https://github.com/KingMikhail/encore). Every bit helps!
 
 ### Changelog
 
